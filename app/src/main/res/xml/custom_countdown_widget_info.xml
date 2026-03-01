@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="180dp"
+    android:minHeight="70dp"
+    android:minResizeWidth="140dp"
+    android:minResizeHeight="70dp"
+    android:maxResizeWidth="280dp"
+    android:maxResizeHeight="110dp"
+    android:targetCellWidth="2"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="86400000"
+    android:widgetCategory="home_screen|keyguard"
+    android:resizeMode="horizontal|vertical"
+    android:initialLayout="@layout/widget_placeholder"
+    android:previewImage="@mipmap/ic_launcher"
+    android:configure="com.example.yearbyweeks.widget.CustomCountdownConfigActivity"
+    android:widgetFeatures="reconfigurable" />
