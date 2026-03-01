@@ -9,13 +9,17 @@ A minimal, elegant Android app to visualize your year's progress by weeks and da
 
 ## 📱 Download
 
-<a href="https://github.com/YOUR_USERNAME/YearByWeeks/releases/latest/download/YearByWeeks.apk">
+<a href="https://github.com/bhavesh-03/YearsByWeek/releases">
   <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android" alt="Download APK">
 </a>
 
-**[⬇️ Download Latest APK](https://github.com/YOUR_USERNAME/YearByWeeks/releases/latest/download/YearByWeeks.apk)**
+**[⬇️ Download Latest APK](https://github.com/bhavesh-03/YearsByWeek/releases)**
 
-> Replace `YOUR_USERNAME` with your actual GitHub username after pushing to GitHub.
+## 📸 Screenshot
+
+<p align="center">
+  <img src="screenshots/main.png" width="300" alt="YearByWeeks App">
+</p>
 
 ## ✨ Features
 
@@ -29,13 +33,6 @@ A minimal, elegant Android app to visualize your year's progress by weeks and da
 - **Dark Theme** - Beautiful dark mode design
 - **Material 3 Design** - Modern Material You design language
 - **Glance Widgets** - Built with Jetpack Glance for modern widget experience
-
-## 📸 Screenshots
-
-<!-- Add your screenshots here -->
-| Main Screen | Weeks Widget | Days Widget | Countdown Widget |
-|-------------|--------------|-------------|------------------|
-| ![Main](screenshots/main.png) | ![Weeks](screenshots/weeks_widget.png) | ![Days](screenshots/days_widget.png) | ![Countdown](screenshots/countdown_widget.png) |
 
 ## 🛠️ Tech Stack
 
@@ -59,7 +56,7 @@ A minimal, elegant Android app to visualize your year's progress by weeks and da
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/YearByWeeks.git
+   git clone https://github.com/bhavesh-03/YearsByWeek.git
    ```
 
 2. Open the project in Android Studio
@@ -76,26 +73,6 @@ To build a release APK:
 
 The APK will be generated at `app/build/outputs/apk/release/`
 
-## 📦 Project Structure
-
-```
-app/
-├── src/main/
-│   ├── java/com/example/yearbyweeks/
-│   │   ├── MainActivity.kt          # Main app entry point
-│   │   ├── data/                     # Data models
-│   │   ├── ui/                       # UI components & theme
-│   │   ├── util/                     # Utility classes
-│   │   └── widget/                   # Widget implementations
-│   │       ├── YearProgressWidget.kt
-│   │       ├── DaysProgressWidget.kt
-│   │       ├── CustomCountdownWidget.kt
-│   │       └── CustomCountdownConfigActivity.kt
-│   └── res/
-│       ├── layout/                   # Widget layouts
-│       └── xml/                      # Widget configurations
-```
-
 ## 🎨 Widgets
 
 ### Adding Widgets to Home Screen
@@ -107,13 +84,6 @@ app/
    - **Weeks Progress** - Shows week-based progress
    - **Days Progress** - Shows day-based progress
    - **Event Countdown** - Customizable countdown to any date
-
-### Widget Customization
-
-The Event Countdown widget allows you to:
-- Set a custom event name
-- Choose any target date
-- Reconfigure anytime by tapping the widget
 
 ## 🤝 Contributing
 
@@ -133,7 +103,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Bhavesh Manoj Mankar**
 
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
+- GitHub: [@bhavesh-03](https://github.com/bhavesh-03)
 
 ## ⭐ Show Your Support
 
