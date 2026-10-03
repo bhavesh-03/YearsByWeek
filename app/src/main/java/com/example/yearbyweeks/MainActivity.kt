@@ -71,7 +71,9 @@ fun YearProgressApp() {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_RESUME) {
                 today = DateUtils.today()
-                scope.launch { refreshWidgets(context) }
+                if (hasWidgets(context) && prefs.lastWidgetRefreshDate != today) {
+                    scope.launch { refreshWidgets(context) }
+                }
             }
         }
         lifecycle.addObserver(observer)
@@ -79,7 +81,10 @@ fun YearProgressApp() {
     }
     LaunchedEffect(lifecycle) {
         lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            while (true) { today = DateUtils.today(); delay(1000) }
+            while (true) {
+                today = DateUtils.today()
+                delay(60_000L)
+            }
         }
     }
     val dark = when (theme) { "Dark" -> true; "Light" -> false; else -> isSystemInDarkTheme() }
@@ -133,8 +138,8 @@ fun YearProgressApp() {
                         onPin = { pinWidget(context, CustomCountdownWidgetReceiver::class.java, it) })
                     2 -> AppearanceDashboard(today, theme, opacity,
                         onTheme = { theme = it; prefs.theme = it; scope.launch { refreshWidgets(context) } },
-                        onOpacity = { opacity = it; prefs.opacity = it },
-                        onOpacityFinished = { scope.launch { refreshWidgets(context) } },
+                        onOpacity = { opacity = it },
+                        onOpacityFinished = { prefs.opacity = opacity; scope.launch { refreshWidgets(context) } },
                         preview = { WidgetPreview(today, opacity = opacity, theme = theme, dark = dark) })
                 }
             }
@@ -159,7 +164,8 @@ private fun WidgetPreview(today: LocalDate, weeks: Boolean = false, event: Count
         val width = maxWidth.value
         val height = if (event != null) 112f else if (weeks) 170f else 190f
         val bitmap = remember(today, weeks, event, opacity, theme, dark, width, context.resources.displayMetrics.density) {
-            WidgetRenderer.render(context, width, height, today, weeks, event?.name, event?.date)
+            WidgetRenderer.render(context, width, height, today, weeks, event?.name, event?.date,
+                opacityOverride = opacity)
         }
         Image(bitmap.asImageBitmap(), if (event == null) "${DateUtils.remainingDays(today)} days left, including today" else "${event.name}, ${DateUtils.daysUntil(event.date, today)} days from today",
             Modifier.fillMaxWidth().height(height.dp))

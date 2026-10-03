@@ -45,7 +45,7 @@ Week dots represent seven-day blocks beginning January 1, with a shorter final b
 
 Event countdowns use local calendar dates: today is 0, tomorrow is 1, and past events display days ago. Date-picker values are decoded as UTC calendar dates, avoiding timezone shifts.
 
-All three widget types refresh periodically and when the app opens. Android may defer background work while the device sleeps; exact midnight updates are not guaranteed. Tap a countdown widget to edit its event. Appearance and background opacity apply to all widgets; text stays opaque.
+The open app checks the date once a minute and whenever it resumes. Home-screen widgets check every 30 minutes while installed, but redraw only when the calendar date changes; relevant date or appearance changes trigger an immediate update. Android may defer background work while the device sleeps, so exact midnight widget updates are not guaranteed. Tap a countdown widget to edit its event. Appearance and background opacity apply to all widgets; text stays opaque.
 
 ## Verification
 

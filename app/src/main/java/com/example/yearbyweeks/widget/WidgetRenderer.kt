@@ -17,7 +17,8 @@ import kotlin.math.min
 /** Shared renderer for previews and home-screen widgets. Only the surface is translucent. */
 object WidgetRenderer {
     fun render(context: Context, width: Float, height: Float, date: LocalDate,
-               weeks: Boolean = false, eventName: String? = null, eventDate: LocalDate? = null): Bitmap {
+               weeks: Boolean = false, eventName: String? = null, eventDate: LocalDate? = null,
+               opacityOverride: Float? = null): Bitmap {
         val prefs = AppPreferences(context)
         val dark = prefs.isDark(context)
         val density = context.resources.displayMetrics.density
@@ -32,7 +33,8 @@ object WidgetRenderer {
         val faint = android.graphics.Color.parseColor(if (dark) "#303030" else "#E5E5E5")
         val surface = android.graphics.Color.parseColor(if (dark) "#171717" else "#FFFFFF")
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        paint.color = ColorUtils.setAlphaComponent(surface, (prefs.opacity * 255).toInt())
+        paint.color = ColorUtils.setAlphaComponent(surface,
+            ((opacityOverride ?: prefs.opacity).coerceIn(0f, 1f) * 255).toInt())
         canvas.drawRoundRect(0f, 0f, w, h, 22f, 22f, paint)
         fun text(value: String, x: Float, y: Float, size: Float, color: Int, bold: Boolean = false, maxWidth: Float = w - 32f) {
             paint.color = color

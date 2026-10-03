@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import androidx.work.workDataOf
 import java.time.LocalDate
 
 class CountdownPinnedReceiver : BroadcastReceiver() {
@@ -15,6 +16,9 @@ class CountdownPinnedReceiver : BroadcastReceiver() {
         val date = intent.getStringExtra("event_date")?.let { runCatching { LocalDate.parse(it) }.getOrNull() } ?: return
         if (id == AppWidgetManager.INVALID_APPWIDGET_ID) return
         CustomCountdownWidget.saveEvent(context, id, name, date)
-        WorkManager.getInstance(context).enqueue(OneTimeWorkRequestBuilder<WidgetRefreshWorker>().build())
+        WorkManager.getInstance(context).enqueue(
+            OneTimeWorkRequestBuilder<WidgetRefreshWorker>()
+                .setInputData(workDataOf("force_refresh" to true)).build()
+        )
     }
 }

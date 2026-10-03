@@ -17,6 +17,10 @@ class AppPreferences(context: Context) {
     var opacity: Float
         get() = prefs.getFloat("opacity", 1f).coerceIn(0f, 1f)
         set(value) { prefs.edit().putFloat("opacity", value.coerceIn(0f, 1f)).apply() }
+    var lastWidgetRefreshDate: LocalDate?
+        get() = prefs.getString("last_widget_refresh_date", null)
+            ?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
+        set(value) { prefs.edit().putString("last_widget_refresh_date", value?.toString()).apply() }
     fun isDark(context: Context): Boolean = when (theme) {
         "Dark" -> true
         "Light" -> false
