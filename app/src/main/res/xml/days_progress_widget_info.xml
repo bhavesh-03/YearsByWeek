@@ -8,10 +8,10 @@
     android:maxResizeHeight="140dp"
     android:targetCellWidth="4"
     android:targetCellHeight="2"
-    android:updatePeriodMillis="0"
+    android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen|keyguard"
     android:resizeMode="none"
     android:initialLayout="@layout/widget_placeholder"
     android:previewImage="@mipmap/ic_launcher"
-    android:widgetFeatures="reconfigurable" />
+ />
 

@@ -18,7 +18,8 @@ A minimal, elegant Android app to visualize your year's progress by weeks and da
 ## 📸 Screenshot
 
 <p align="center">
-  <img src="screenshots/main.png" width="300" alt="YearByWeeks App">
+  <img src="screenshots/main.png" width="280" alt="YearByWeeks light appearance">
+  <img src="screenshots/dark.png" width="280" alt="YearByWeeks dark appearance">
 </p>
 
 ## ✨ Features
@@ -30,9 +31,32 @@ A minimal, elegant Android app to visualize your year's progress by weeks and da
   - 📊 **Weeks Progress Widget** - Shows weeks elapsed/remaining
   - 📅 **Days Progress Widget** - Shows days elapsed/remaining
   - ⏰ **Event Countdown Widget** - Custom countdown to any event
-- **Dark Theme** - Beautiful dark mode design
-- **Material 3 Design** - Modern Material You design language
+- **Appearance** - Minimal black-and-white System, Light, and Dark themes with a custom dot-grid icon
+- **Widget opacity** - Adjustable from transparent to opaque, with live previews
+- **Personal countdowns** - Create, edit, delete, and pin saved milestone cards
+- **Focused navigation** - Dedicated Year, Countdowns, and Style screens
 - **Glance Widgets** - Built with Jetpack Glance for modern widget experience
+
+## Date calculations
+
+Remaining year days **include today**. January 1 has 365 (or 366) days left, and December 31 has 1. Progress counts completed calendar days, so January 1 starts at 0%. This agrees with the countdown to the next January 1.
+
+Week dots represent seven-day blocks beginning January 1, with a shorter final block. The weeks label shows full weeks plus remaining days. It does not use ISO week-year numbers, which can belong to the adjacent year around New Year.
+
+Event countdowns use local calendar dates: today is 0, tomorrow is 1, and past events display days ago. Date-picker values are decoded as UTC calendar dates, avoiding timezone shifts.
+
+All three widget types refresh periodically and when the app opens. Android may defer background work while the device sleeps; exact midnight updates are not guaranteed. Tap a countdown widget to edit its event. Appearance and background opacity apply to all widgets; text stays opaque.
+
+## Verification
+
+```bash
+./gradlew testDebugUnitTest lintDebug assembleDebug
+./gradlew connectedDebugAndroidTest
+```
+
+Unit tests cover leap years, year boundaries, every date in representative years, countdown signs, and calendar-week rollover. Emulator tests cover appearance, opacity persistence, and countdown creation, editing, and deletion.
+
+The installable development APK is `app/build/outputs/apk/debug/app-debug.apk`. Distribution builds require your own release signing configuration.
 
 ## 🛠️ Tech Stack
 
