@@ -123,11 +123,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
-
-**Bhavesh Manoj Mankar**
-
-- GitHub: [@bhavesh-03](https://github.com/bhavesh-03)
 
 ## ⭐ Show Your Support
 
